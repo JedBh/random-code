@@ -2,6 +2,9 @@
 
 const divs = document.querySelectorAll(".square");
 const button = document.querySelector("#submit");
+const reset = document.querySelector("#reset");
+let divRedList = [];
+
 button.classList.add("disabled");
 
 let selectedSquares = [];
@@ -11,23 +14,26 @@ const genRandom = (list) => {
 }
 
 divs.forEach(div => {
-    let isTeal = false;
+    div.isTeal = false;
     div.addEventListener("click", () => {
         button.classList.remove("disabled");
-        if (!isTeal) {
+        if (divRedList.indexOf(div) > -1) {
+            console.log("This is red")
+        } else if (!div.isTeal) {
             div.classList.add("selected");
-            isTeal = true;
+            div.isTeal = true;
             selectedSquares.push(div);
             console.log(selectedSquares);
         } else {
             div.classList.remove("selected");
-            isTeal = false;
+            div.isTeal = false;
             let index = selectedSquares.indexOf(div);
             if (index > -1) {
                 selectedSquares.splice(index, 1);
                 console.log(selectedSquares);
             }
         }
+
         if (selectedSquares.length === 0) {
             button.classList.add("disabled");
         }
@@ -39,9 +45,20 @@ button.addEventListener("click", () => {
         button.classList.remove("disabled")
         let randomSquareIndex = genRandom(selectedSquares);
         selectedSquares[randomSquareIndex].classList.add("submmited");
+        divRedList.push(selectedSquares[randomSquareIndex]);
         selectedSquares.splice(randomSquareIndex, 1);
     } else {
         button.classList.add("disabled");
-        console.log("trying to add");
     }
+});
+
+reset.addEventListener("click", () => {
+    divs.forEach(div => {
+        div.classList.remove("selected");
+        div.classList.remove("submmited");
+        div.isTeal = false;
+        selectedSquares = []
+        button.classList.add("disabled");
+        divRedList = [];
+    });
 });

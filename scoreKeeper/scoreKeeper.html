@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scoreKeeper.css">
+    <title>Score Keeper</title>
+</head>
+
+<body>
+    <main>
+        <img src="https://cdn.pixabay.com/photo/2019/03/10/14/04/table-tennis-4046275_960_720.jpg"
+            alt="Ping Pong Photo">
+        <h1>Ping Pong Score Keeper</h1>
+        <div class="score-keeper">
+            <p><span id="player1Score"></span> to <span id="player2Score"></span></p>
+        </div>
+        <p>use the buttons to keep score</p>
+        <p class="element-inline">Playing To</p>
+        <input class="element-inline" type="number" name="number" id="maxScore">
+        <div class="buttons">
+            <button id="plusPlayer1">+1 Player One</button>
+            <button id="plusPlayer2">+1 Player Two</button>
+            <button id="reset">Reset</button>
+        </div>
+    </main>
+    <div class="banner">
+
+    </div>
+
+    <script src="scoreKeeper.js"></script>
+</body>
+
+</html>
